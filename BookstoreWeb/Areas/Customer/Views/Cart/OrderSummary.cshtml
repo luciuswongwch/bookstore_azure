@@ -1,0 +1,106 @@
+﻿@model ShoppingCartVM
+
+<form method="post" asp-controller="Cart" asp-action="OrderSummary">
+	<div class="card">
+		<div class="card-header">
+			<span class="float-start mt-2">
+				Order summary
+			</span>
+			<div class="float-end">
+				<a asp-controller="Cart" asp-action="ShoppingCart" class="btn btn-outline-primary">Back to cart</a>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<h5 class="text-info mb-2">
+						Shipping details
+					</h5>
+					<div class="row mt-2">
+						<div class="col-3 mt-1"><label>Name</label></div>
+						<div class="col-9">
+							<input asp-for="OrderHeader.Name" class="form-control"/>
+							<span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+						</div>
+					</div>
+						<div class="row mt-2">
+							<div class="col-3 mt-1"><label>Phone</label></div>
+							<div class="col-9">
+								<input asp-for="OrderHeader.PhoneNumber" class="form-control" />
+								<span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-3 mt-1"><label>Street address</label></div>
+							<div class="col-9">
+								<input asp-for="OrderHeader.StreetAddress" class="form-control" />
+								<span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-3 mt-1"><label>City</label></div>
+							<div class="col-9">
+								<input asp-for="OrderHeader.City" class="form-control" />
+								<span asp-validation-for="OrderHeader.City" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-3 mt-1"><label>State</label></div>
+							<div class="col-9">
+								<input asp-for="OrderHeader.State" class="form-control" />
+								<span asp-validation-for="OrderHeader.State" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-3 mt-1"><label>Postal code</label></div>
+							<div class="col-9">
+								<input asp-for="OrderHeader.PostalCode" class="form-control" />
+								<span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					<div class="d-lg-none">
+						<hr />
+					</div>
+					<div class="col-12 col-lg-5 offset-lg-1">
+						<h5 class="text-info mb-2">
+							Order summary
+						</h5>
+						<ul class="list-group mt-2">
+							@foreach (var details in Model.ListCart)
+							{
+								<li class="list-group-item d-flex justify-content-between">
+									<div>
+										<h6 class="my-0">@details.Product.Title</h6>
+										<small class="text-muted">Quantity: @details.Quantity</small>
+									</div>
+									<span class="text-muted">@((details.Price * details.Quantity).ToString("c"))</span>
+								</li>
+							}
+							<li class="list-group-item d-flex justify-content-between bg-light">
+								<small class="text-info">Total (CAD)</small>
+								<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c")</strong>
+							</li>
+						</ul>
+					</div>
+				</div>
+		</div>
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-12 col-sm-8 d-flex align-items-center">
+					<span style="color:maroon; font-size:14px;">
+						Estimated date of delivery:
+						@DateTime.Now.AddDays(7).ToShortDateString() - @DateTime.Now.AddDays(14).ToShortDateString()
+					</span>
+				</div>
+				<div class="col-12 col-sm-4 mt-1 mt-sm-0">
+					<button type="submit" class="btn btn-primary form-control">Place order</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,78 @@
+﻿@model ShoppingCartVM
+
+<form method="post">
+	<div class="card">
+		<div class="card-header">
+			<div class="float-start mt-2">
+				<span>Shopping cart</span>
+			</div>
+			<div class="float-end">
+				<a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Continue shopping</a>
+			</div>
+		</div>
+
+		<div class="card-body">
+			@foreach(var item in Model.ListCart)
+			{
+			<div class="row d-flex align-items-center">
+				<div class="d-none d-md-block col-md-3">
+					<img src="@item.Product.ImageUrl" width="100%" />
+				</div>
+					<div class="col-12 col-md-3 pt-3">
+					<h5><strong>
+						<a asp-area="Customer" asp-controller="Home" asp-action="ProductDetails" asp-route-productId="@item.ProductId">@item.Product.Title</a>
+					</strong></h5>
+					<small>@Html.Raw(item.Product.Description)</small>
+				</div>
+				<div class="col-12 col-md-6 row">
+					<div class="col-7 col-sm-6 d-flex align-items-center">
+						<h6>
+							Subtotal:&ensp;<strong>
+								@item.Price.ToString("c") CAD
+								<span class="text-muted">&nbsp;x&nbsp;</span>
+								@item.Quantity
+							</strong>
+						</h6>
+					</div>
+					<div class="col-5 col-sm-6 row d-flex align-items-center">
+						<div class="col-8 d-flex justify-content-center">
+							<div class="btn-group">
+								<a asp-action="plus" asp-route-cartId="@item.Id" class="btn btn-primary">
+									<i class="bi bi-plus"></i>
+								</a>&nbsp;
+								<a asp-action="minus" asp-route-cartId="@item.Id" class="btn btn-warning">
+									<i class="bi bi-dash"></i>
+								</a>
+							</div>
+						</div>
+							<div class="col-4 d-flex justify-content-center">
+							<a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-danger">
+								<i class="bi bi-trash-fill"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr />
+			}
+			<div class="row">
+				<div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8">
+					<ul class="list-group">
+						<li class="list-group-item d-flex justify-content-between bg-light">
+							<span class="text-info">Total</span>
+							<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c") CAD</strong>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8">
+					<a asp-action="OrderSummary" class="btn btn-success form-control">Go to order summary</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

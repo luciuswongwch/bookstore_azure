@@ -1,0 +1,9 @@
+﻿@model int
+
+<div class="container text-center">
+    <h2 class="text-primary text-center">Payment made successfully</h2>
+    <p>Your payment number: @Model</p>
+    <br />
+    <p>Your payment has been processed successfully!</p>
+    <a asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-orderId="@Model" class="btn btn-primary">Back to order details</a>
+</div> 
