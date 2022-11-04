@@ -49,6 +49,27 @@ SeedData.cs is included in .gitignore file to hide the login credentials of seed
 
 ---
 
+Test payment in Stripe  
+
+Some of the accepted test card number  
+Visa (debit)	4000056655665556	Any 3 digits	Any future date  
+Mastercard	5555555555554444	Any 3 digits	Any future date  
+Mastercard (2-series)	2223003122003222	Any 3 digits	Any future date  
+Mastercard (debit)	5200828282828210	Any 3 digits	Any future date  
+Mastercard (prepaid)	5105105105105100	Any 3 digits	Any future date  
+American Express	378282246310005	Any 4 digits	Any future date  
+American Express	371449635398431	Any 4 digits	Any future date  
+
+Stripe guide of test payment  
+Use a valid future date, such as 12/34.  
+Use any three-digit CVC (four digits for American Express cards).  
+Use any value you like for other form fields.  
+
+List of test cards in Stripe  
+https://stripe.com/docs/testing?testing-method=card-numbers#visa
+
+---
+
 ## Deployment  
 
 Live preview: https://bookstoreluciuswong.azurewebsites.net/  
