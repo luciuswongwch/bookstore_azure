@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+    bookstore_web:
+        container_name: bookstore_web
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: always
+        environment:
+            - ASPNETCORE_URLS=http://+:8000
+    webserver:
+        container_name: portfolio_webserver
+        image: nginx:latest
+        ports:
+          - 80:80
+          - 443:443
+        restart: always
+        volumes:
+          - ./nginx/conf/:/etc/nginx/conf.d/:ro
+          - ./certbot/www:/var/www/certbot/:ro
+          - ./certbot/conf/:/etc/nginx/ssl/:ro
+    certbot:
+        image: certbot/certbot:latest
+        depends_on:
+          - webserver
+        volumes:
+          - ./certbot/www/:/var/www/certbot/:rw
+          - ./certbot/conf/:/etc/letsencrypt/:rw
+
+networks:
+    default:
+        name: portfolio_network

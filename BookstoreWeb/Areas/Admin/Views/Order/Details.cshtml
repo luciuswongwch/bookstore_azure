@@ -229,11 +229,11 @@
 								<div class="row">
 									<div class="col-8">
 										<span class="text-primary">Product: @detail.Product.Title</span><br />
-										<small class="text-muted">Price: @detail.Price.ToString("c")</small><br />
+										<small class="text-muted">Price: $@detail.Price.ToString("0.00")</small><br />
 										<small class="text-muted">Quantity: @detail.Quantity</small>
 									</div>
 									<div class="col-4 text-end">
-										<p class="text-success">@((detail.Quantity * detail.Price).ToString("c"))</p>
+										<p class="text-success">$@((detail.Quantity * detail.Price).ToString("0.00"))</p>
 									</div>
 								</div>
 								@if (count < listCount) {
@@ -243,7 +243,7 @@
 						</div>
 						<div class="card-footer d-flex justify-content-between">
 							<span>Total (CAD): </span>
-							<span>@Model.OrderHeader.OrderTotal.ToString("c")</span>
+							<span>$@Model.OrderHeader.OrderTotal.ToString("0.00")</span>
 						</div>
 					</div>
 					@if (Model.OrderHeader.ApplicationUserId == userManager.GetUserId(User)

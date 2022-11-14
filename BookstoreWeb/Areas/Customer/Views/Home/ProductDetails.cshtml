@@ -29,7 +29,7 @@
                     <strike>
                         <div class="row">
                             <p class="col-4 col-md-3">List price:</p>
-                            <p class="col-8 col-md-9">@Model.Product.ListPrice.ToString("c")</p>
+                            <p class="col-8 col-md-9">$@Model.Product.ListPrice.ToString("0.00")</p>
                         </div>
                     </strike>
                     <table class="table table-light">
@@ -44,9 +44,9 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Price</th>
-                                <td>@Model.Product.Price.ToString("c")</td>
-                                <td>@Model.Product.Price50.ToString("c")</td>
-                                <td>@Model.Product.Price100.ToString("c")</td>
+                                <td>$@Model.Product.Price.ToString("0.00")</td>
+                                <td>$@Model.Product.Price50.ToString("0.00")</td>
+                                <td>$@Model.Product.Price100.ToString("0.00")</td>
                             </tr>
                         </tbody>
                     </table>

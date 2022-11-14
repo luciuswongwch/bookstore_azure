@@ -72,8 +72,26 @@ https://stripe.com/docs/testing?testing-method=card-numbers#visa
 
 ## Deployment  
 
-Live preview: https://bookstoreluciuswong.azurewebsites.net/  
+URL: https://bookstore.luciuswong.com/  
 
 Image preview:  
 
 ![bookstore_snapshot.png](/bookstore_snapshot.png)
+
+---
+
+Certbot commands for HTTPS  
+
+Dry run for certificates
+
+```docker compose run --rm certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d bookstore.luciuswong.com```
+
+Renew certificates
+
+```$ docker compose run --rm certbot renew```
+
+--- 
+
+Useful documentation  
+
+https://mindsers.blog/post/https-using-nginx-certbot-docker/

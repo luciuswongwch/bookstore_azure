@@ -28,7 +28,7 @@
 					<div class="col-7 col-sm-6 d-flex align-items-center">
 						<h6>
 							Subtotal:&ensp;<strong>
-								@item.Price.ToString("c") CAD
+								$@item.Price.ToString("0.00") CAD
 								<span class="text-muted">&nbsp;x&nbsp;</span>
 								@item.Quantity
 							</strong>
@@ -60,7 +60,7 @@
 					<ul class="list-group">
 						<li class="list-group-item d-flex justify-content-between bg-light">
 							<span class="text-info">Total</span>
-							<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c") CAD</strong>
+							<strong class="text-info">$@Model.OrderHeader.OrderTotal.ToString("0.00") CAD</strong>
 						</li>
 					</ul>
 				</div>
