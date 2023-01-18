@@ -70,11 +70,11 @@ https://stripe.com/docs/testing?testing-method=card-numbers#visa
 
 ---
 
-## Deployment  
+## ~~Deployment~~  
 
-URL: https://bookstore.luciuswong.com/  
+~~URL: https://bookstore.luciuswong.com/~~  
 
-Image preview:  
+~~Image preview:~~  
 
 ![bookstore_snapshot.png](/bookstore_snapshot.png)
 
